@@ -1,25 +1,25 @@
 {
-  "name": "ipgen",
-  "version": "0.0.0",
-  "description": "NodeJS wrapper arround the steerapi c code, of same name https://github.com/steerapi/ipgen",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/netrevisanto/ipgen.git"
-  },
-  "keywords": [
-    "ipgen",
-    "generate",
-    "traffic",
-    "udp"
-  ],
-  "author": "Vicente Trevisan Neto",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/netrevisanto/ipgen/issues"
-  },
-  "homepage": "https://github.com/netrevisanto/ipgen"
+    "name": "ipgen",
+    "version": "0.0.1",
+    "description": "NodeJS wrapper arround the steerapi c code, of same name https://github.com/steerapi/ipgen",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/netrevisanto/ipgen.git"
+    },
+    "keywords": [
+        "ipgen",
+        "generate",
+        "traffic",
+        "udp"
+    ],
+    "author": "Vicente Trevisan Neto",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/netrevisanto/ipgen/issues"
+    },
+    "homepage": "https://github.com/netrevisanto/ipgen"
 }
