@@ -36,6 +36,6 @@ How to use?
 	});
 
 ### Credits
-	* [Neto Trevisan] - Backend/Frontend Web Developer
+* [Neto Trevisan] - Backend/Frontend Web Developer
 
-[Neto Trevisan]:http://www.github.com/netrevisanto
+[Neto Trevisan]:http://netrevisanto.com
