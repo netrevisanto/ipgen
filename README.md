@@ -35,6 +35,19 @@ How to use?
 		console.log("Network flush is over!")
 	});
 
+### You can also specify the source IP address for an execution(Default is 127.0.0.1):
+	require("ipgen").generate({
+		silent: true,
+		host: 'localhost',
+		port: '5556',
+		bandwidth: 1000, // 1 kbps
+		time: 10000, // for how long? in miliseconds
+		srcIp: '1.1.1.1' // Will generate packages with source ip address like 1.1.1.1
+	}, function(err,succ){
+		if (err) throw err;
+		console.log("Network flush is over!")
+	});
+
 ### Credits
 * [Neto Trevisan] - Backend/Frontend Web Developer
 

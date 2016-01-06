@@ -54,7 +54,7 @@
 
  ============================================================================
  */
-#define USAGE "Usage: %s [-v] -[s|c] [-n NUM_PACKET] [-l PACKET_LENGTH_IN_BYTES] [-b BANDWIDTH_IN_BYTES_PER_SEC] IPADDRESS PORT\n"
+#define USAGE "Usage: %s [-v] -[s|c] [-n NUM_PACKET] [-w IP_SRC] [-l PACKET_LENGTH_IN_BYTES] [-b BANDWIDTH_IN_BYTES_PER_SEC] IPADDRESS PORT\n"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -134,6 +134,7 @@ int main(int argc, // Number of strings in array argv
 		char **envp) { // Array of environment variable strings
 
 	char *ipaddr = "127.0.0.1";
+	char *ipsrc = "127.0.0.1";
 	int plen = 100;
 	double bw = 100.0;
 	int port = 5556;
@@ -143,7 +144,7 @@ int main(int argc, // Number of strings in array argv
 	printf("================================================\n");
 	printf("IP TRAFFIC GENERATOR\n");
 	while (1) {
-		if ((c = getopt(argc, argv, "scn:l:b:hv")) == EOF)
+		if ((c = getopt(argc, argv, "scn:w:l:b:hv")) == EOF)
 			break;
 		switch (c) {
 		case 'v':
@@ -161,8 +162,13 @@ int main(int argc, // Number of strings in array argv
 		case 'b':
 			bw = atof(optarg);
 			break;
-		case 'n':
+		case 'n':			
 			numpkt = atol(optarg);
+			break;
+		case 'w':						
+			if (optarg != '\0'){
+				ipsrc = optarg;
+			}
 			break;
 		case 'h':
 		default:
@@ -171,6 +177,7 @@ int main(int argc, // Number of strings in array argv
 			return EXIT_FAILURE;
 		}
 	}
+	printf("IP SRC: %s \n",ipsrc);
 
 	if (mode == MODE_CLIENT) {
 		printf("MODE: CLIENT\n");
@@ -272,7 +279,7 @@ int main(int argc, // Number of strings in array argv
 		iph->ip_ttl = 255;
 		iph->ip_p = IPPROTO_RAW;
 		iph->ip_sum = 0; /* set it to 0 before computing the actual checksum later */
-		inet_pton(AF_INET, "127.0.0.1", &(iph->ip_src));
+		inet_pton(AF_INET, ipsrc, &(iph->ip_src));
 		iph->ip_dst.s_addr = sa.sin_addr.s_addr;
 
 		iph->ip_sum = csum((unsigned short *) iph, ipheader_size);
