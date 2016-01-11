@@ -298,7 +298,8 @@ int main(int argc, // Number of strings in array argv
 			}
 			bytes_sent = sendto(sock, buffertotal, total, 0,
 					(struct sockaddr*) &sa, sizeof sa);
-			int interval = (int) (1000000.0 * plen / bw);
+			
+			int interval = (int) (1000000.0 * plen / bw);			
 			usleep(interval);
 			if (bytes_sent < 0) {
 				fprintf(stderr, "Error sending packet.\n");
@@ -309,9 +310,10 @@ int main(int argc, // Number of strings in array argv
 			*seq = htonl(num);
 		}
 		if (numpkt != 0) {
-			*seq = htonl(0xffffffff);
+			*seq = htonl(0xffffffff);			
 			bytes_sent = sendto(sock, buffertotal, total, 0,
-					(struct sockaddr*) &sa, sizeof sa);
+					(struct sockaddr*) &sa, sizeof sa);			
+			printf("%f", bytes_sent);
 		}
 	} else {
 		//SERVER
